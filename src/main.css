@@ -1,0 +1,216 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+    background-color: black;
+    margin: 0;
+    border: 0;
+}
+
+table
+{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table th
+{
+    position: sticky;
+    top: 0;
+}
+
+th
+{
+    font-size: 1.5vw;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: rgb(255, 255, 255);
+    padding: 1vw;
+    /* position: fixed; */
+}
+
+td
+{
+    font-size: 1.3vw;
+    text-align: center;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    /* height: 16px;
+    width: 18px; */
+    padding: 0;
+    box-sizing: unset;
+    border-radius: 50%;
+    background-color: rgb(139, 17, 17);
+    border: 3px solid black;
+    margin: 0;
+    vertical-align: middle;
+}
+
+
+input[type="radio"]:checked {
+    background-color: rgb(67, 220, 105);
+}
+
+/* form
+{
+    background-color: aqua;
+} */
+
+.signout
+{
+    background-color: #202020;
+    font-size: 1vw;
+    padding: 1vw;
+    border-radius: .4vw;
+    color: white;
+}
+
+.name
+{
+    background-color: rgb(55, 55, 55);
+    padding: 1vw;
+    font-size: 1vw;
+    border-radius: .4vw;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.profile
+{
+    margin-top: 2vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter
+{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.logo
+{
+    background-image: url("lnmGamers_logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    width: 80vw;
+    height: 20vh;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.slots_container
+{
+    width: 70vw;
+    height: 55vh;
+    border-radius: 1vw;
+    /* display: flex; */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255, 255, 255);
+    /* padding: 1vw; */
+    overflow-y: scroll;
+}
+
+.buttons
+{
+    /* background-color: aquamarine; */
+    width: 70vw;
+    height: 7vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+button
+{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2vw;
+    font-weight: 900;
+    padding: 2vw;
+    border: 0;
+    border-radius: 1vw;
+}
+
+button:hover
+{
+    cursor: pointer;
+}
+
+.past_booking
+{
+    background-color: rgb(18, 167, 231);
+}
+
+.book_now
+{
+    background-color: rgb(22, 222, 35);
+}
+
+.past_booking:hover
+{
+    background-color: rgb(17, 157, 216);
+}
+
+.book_now:hover
+{
+    background-color: rgb(21, 212, 34);
+}
+
+.value
+{
+    width: 3vw;
+}
+
+.image
+{
+    height: 5vw;
+    width: 15vw;
+}
+
+.triangle-buttons {
+    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    padding: 0.5vw;
+    /* height: 3vw; */
+}
+
+.triangle-buttons__triangle {
+    border-style: solid;
+    height: 0px;
+    width: 0px;
+}
+
+.triangle-buttons__triangle--r {
+    border-color: transparent transparent transparent #727272;
+    border-width: 0.5vw 0 0.5vw 0.5vw;
+}
+
+.triangle-buttons__triangle--l {
+    border-color: transparent #727272 transparent transparent;
+    border-width: 0.5vw 0.5vw 0.5vw 0;
+}
+
+@media(max-width: 650px)
+{
+    .slots_container
+    {
+        height: auto;
+    }
+}
+

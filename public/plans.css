@@ -1,0 +1,164 @@
+body
+{
+    background-color: #5151b3;
+}
+
+.profile
+{
+    height: 10vw;
+    width: 30vw;
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+}
+
+.profile_image
+{
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 8px solid black;
+    height: 8vw;
+    width: 8vw;
+}
+
+.profile_name
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name
+{
+    background-color: rgb(255, 255, 255);
+    padding: 1vw;
+    border-radius: 20px;
+    border: 8px solid black;
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+
+.list_topics
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(.6 * 50vw);
+}
+
+.product_name
+{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: left;
+    gap: 10%;
+    /* justify-content: center; */
+}
+
+.name_product
+{
+    background-color: rgb(255, 255, 255);
+    padding: 1vw;
+    width: 30%;
+    border-radius: 14px;
+    border: 5px solid black;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.form_data
+{
+    width: 50vw;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+    margin-left: auto;
+    margin-right: auto;
+    /* flex-direction: column; */
+    gap: 1vw;
+}
+
+.buy_now
+{
+    /* width: 10%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: aliceblue; */
+}
+
+.product
+{
+    width: 60%;
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.input
+{
+    background-color: rgb(255, 255, 255);
+    width: 20px;
+    height: 20px;
+    padding: 1vw;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: flex;
+}
+
+form
+{
+    /* background-color: antiquewhite; */
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    /* gap: 3vw; */
+    justify-content: space-evenly;
+}
+
+.heading
+{
+    margin-bottom: 40px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 18px;
+    padding: 0;
+    box-sizing: unset;
+    border-radius: 50%;
+    background-color: rgb(139, 17, 17);
+    border: 3px solid black;
+    margin: 0;
+    vertical-align: middle;
+}
+
+
+input[type="radio"]:checked {
+    background-color: rgb(67, 220, 105);
+}
+
+.buy_btn
+{
+    background-color: rgb(255, 255, 255);
+    height: 8vw;
+    width: 8vw;
+    font-size: 1.5vw;
+    border-radius: 50%;
+    border: 6px solid black;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.clear
+{
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    font-size: 1.5vw;
+    border-radius: 10px;
+    border: 6px solid black;
+    font-family: monospace;
+    cursor: pointer;
+}
