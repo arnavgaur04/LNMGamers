@@ -1,7 +1,7 @@
 var express = require('express');
 const app = express();
-var sign_val, user_data, slot, split, length, pay_res;
-var price = 0;
+var sign_val, user_data, slot, split, length, pay_res, price;
+var slot = new Array();
 app.use(express.static("./src")); 
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
@@ -9,22 +9,24 @@ app.set('view engine', 'ejs');
 app.post('/signedin', (req, res)=>{
   sign_val = req.body.val;
   user_data = req.body.user;
+  console.log(sign_val);
+  res.end();
 })
 
 app.post('/success', (req, res)=>{
   pay_res = req.body.result;
+  if (slot[0].length == 1) {
+    slot[0] = slot;
+  }
+  console.log(slot);
+  res.json(
+    {
+      val: ["true", slot]
+    }
+  );
+  res.end();
 })
 
-app.get('/success', (req, res)=>{
-  if (pay_res == "true") {
-    res.render('success');
-  }
-
-  else
-  {
-    res.send("Not allowed!");
-  }
-})
 
 app.get('/admin', (req, res)=>{
   if (user_data[1] == "4nKkyqnSTvXozslUFwwDkOskKet1") {
@@ -38,48 +40,24 @@ app.get('/admin', (req, res)=>{
   }
 })
 
-app.post('/payment', (req, res)=>{
-  slot = req.body.slots;
-  price = 0;
-
-  if (slot == undefined) {
-    res.redirect("/main");
+app.get('/success', (req, res)=>{
+  if (pay_res == "true") {
+    res.render('success');
   }
-
+  
   else
   {
-    length = slot.length;
-    if (slot[1] == " " || slot[1] == "0") {
-      var new_slot = "";
-      for (let index = 0; index < length; index++) {
-        new_slot = new_slot + slot[index];      
-      }
-      slot = [0];
-      slot[0] = new_slot;
-    }
-
-    for (let i = 0; i < slot.length; i++) {
-      split = slot[i].split(" ");
-      if (split[1] == "1") {
-        price = price + 80;
-      } 
-      
-      else if (split[1] == "2") {
-        price = price + 150;
-      }
-  
-      else if (split[1] == "3") {
-        price = price + 200;
-      }
-  
-      else
-      {
-        price = price + 250;
-      }
-    }
-  
-    res.render("payment", {Price: price*100});
+    res.send("Not allowed!");
   }
+})
+
+app.post('/pay', (req, res)=>{
+  price = req.body.pay;
+})
+
+app.post('/payment', (req, res)=>{
+  slot = req.body.slots;
+  res.render("payment", {Price: price*100});
 })
 
 app.get('/main', (req, res)=>{
@@ -89,7 +67,7 @@ app.get('/main', (req, res)=>{
 
   else
   {
-    res.send("not allowed!");
+    res.redirect("/");
   }
 })
 

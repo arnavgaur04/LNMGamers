@@ -5,7 +5,9 @@ var td = document.querySelectorAll('td');
 var value = document.querySelectorAll(".value");
 var book_now = document.querySelector(".book_now");
 book_now.innerHTML = "Book Now";
+book_now.disabled = true;
 var Price = 0;
+var date = new Date();
 var price = new Array();
 for (let i = 0; i < 10; i++) {
     input[i] = document.querySelectorAll(".radio")[i];
@@ -14,6 +16,16 @@ for (let i = 0; i < 10; i++) {
     value[i].innerHTML = 1;
 }
 image = document.querySelectorAll(".image");
+
+if (date.getHours() >= 20) {
+    date.setDate(date.getDate() + 1);
+    document.querySelector('.date').innerHTML = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+}
+
+else
+{
+    document.querySelector('.date').innerHTML = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+}
 
 for (let i = 0; i < 10; i++) {
     image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
@@ -24,31 +36,64 @@ for (let i = 0; i < 10; i++) {
 function right(i) {
     if (input[i].checked == true) {
         price[i] = 0;
-        if (c[i] < 4) {
-            c[i]++;
-            value[i].innerHTML = c[i];
-            input[i].value = i + " " + c[i];
-        }
-    
-        if (c[i] == 1) {
-            price[i] = 80;
-            image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
-        }
-    
-        else if (c[i] == 2) {
-            price[i] = 150;
-            image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
-        }
+
+        if (i < 9) {
+            if (c[i] < 4) {
+                c[i]++;
+                value[i].innerHTML = c[i];
+                input[i].value = i + " " + c[i];
+            }
         
-        else if (c[i]==3) {
-            price[i] = 200;
-            image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            if (c[i] == 1) {
+                price[i] = 80;
+                image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if (c[i] == 2) {
+                price[i] = 150;
+                image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+            
+            else if (c[i]==3) {
+                price[i] = 200;
+                image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if(c[i] == 4)
+            {
+                price[i] = 250;
+                image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
         }
-    
-        else if(c[i] == 4)
+
+        else
         {
-            price[i] = 250;
-            image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            if (c[i] < 4) {
+                c[i]++;
+                value[i].innerHTML = c[i];
+                input[i].value = i + " " + c[i];
+            }
+        
+            if (c[i] == 1) {
+                price[i] = 160;
+                image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if (c[i] == 2) {
+                price[i] = 300;
+                image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+            
+            else if (c[i]==3) {
+                price[i] = 400;
+                image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if(c[i] == 4)
+            {
+                price[i] = 500;
+                image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
         }
 
         sum();
@@ -61,31 +106,64 @@ function right(i) {
 function left(i) {
     if (input[i].checked == true) {
         price[i] = 0;
-        if (c[i] > 1) {
-            c[i]--;
-            value[i].innerHTML = c[i];
-            input[i].value = i + " " + c[i];
-        }
-    
-        if (c[i] == 1) {
-            price[i] = 80;
-            image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
-        }
-    
-        else if (c[i]==2) {
-            price[i] = 150;
-            image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
-        }
+
+        if (i < 9) {
+            if (c[i] > 1) {
+                c[i]--;
+                value[i].innerHTML = c[i];
+                input[i].value = i + " " + c[i];
+            }
         
-        else if (c[i]==3) {
-            price[i] = 200;
-            image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            if (c[i] == 1) {
+                price[i] = 80;
+                image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if (c[i] == 2) {
+                price[i] = 150;
+                image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+            
+            else if (c[i] == 3) {
+                price[i] = 200;
+                image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if(c[i] == 4)
+            {
+                price[i] = 250;
+                image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
         }
-    
-        else if (c[i] == 4)
+
+        else
         {
-            price[i] = 250;
-            image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            if (c[i] > 1) {
+                c[i]--;
+                value[i].innerHTML = c[i];
+                input[i].value = i + " " + c[i];
+            }
+        
+            if (c[i] == 1) {
+                price[i] = 160;
+                image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if (c[i] == 2) {
+                price[i] = 300;
+                image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+            
+            else if (c[i]==3) {
+                price[i] = 400;
+                image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
+        
+            else if(c[i] == 4)
+            {
+                price[i] = 500;
+                image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+            }
         }
 
         sum();
@@ -95,6 +173,7 @@ function left(i) {
 
 }
 
+
 $(".radio").click(function()
 {
     if ($('.radio:checked').length > 3) {
@@ -102,14 +181,7 @@ $(".radio").click(function()
     }
 
     if ((this).checked == false) {
-        if ((this).value[0] == "a") {
-            val = 10;
-        }
-        
-        else
-        {
-            val = (this).value[0];
-        }
+        val = (this).value[0];
         
         Price = Price - price[val];
         price[val] = 0;
@@ -120,27 +192,30 @@ $(".radio").click(function()
 
     else
     {
-        if ((this).value[0] == "a") {
-            val = 10;
-        }
-        
-        else
-        {
-            val = (this).value[0];
+        val = (this).value[0];
+
+        if (val == 9) {
+            price[val] = 160;
         }
 
-        Price = Price + 80;
-        price[val] = 80;
+        else
+        {
+            price[val] = 80;
+        }
+
+        Price = Price + price[val];
     }
 
     console.log(Price);
     
     if (Price == 0) {
         book_now.innerHTML = "Book Now";
+        book_now.disabled = true;
     }
     
     else
     {
+        book_now.disabled = false;
         book_now.innerHTML = "Rs." + Price;
     }
 })
@@ -152,7 +227,12 @@ $(".clear").click(function()
     var radio = document.querySelectorAll(".radio");
     for (let i = 0; i < 10; i++) {
         radio[i].checked = false;
+        value[i].innerHTML = 1;
+        c[i] = 1;
+        price[i] = 0;
+        image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
     }
+    book_now.disabled = true;
     book_now.innerHTML = "Book Now";
 })
 
@@ -167,18 +247,16 @@ function submit() {
     document.getElementById("submit").click();
 }
 
-// $('input.radio').on('click', function (evt) {
-    // if ($('.radio:checked').length > 3) {
-    //     this.checked = false;
-    //     if ((this).value[0] == "a") {
-    //         val = 10;
-    //     }
-        
-    //     else
-    //     {
-    //         val = (this).value[0];
-    //     }
-    //     Price = Price - price[val];
-    // }
-// });
+function post_msg() {
+    $.post("/pay",
+    {
+        pay: Price
+    });
+    // console.log("submitted");
+}
+
+
+
+
+
 

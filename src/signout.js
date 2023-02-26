@@ -19,6 +19,11 @@ signout_btn.addEventListener("click", function(){
     signOut(auth).then(() => {
         // Sign-out successful.
         console.log("signed out.");
+        $.post("/signedin",
+            {
+                val: false,
+                user: null
+            });
         location.href = "/"
       }).catch((error) => {
         // An error happened.

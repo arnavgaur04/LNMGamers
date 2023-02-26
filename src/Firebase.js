@@ -16,13 +16,12 @@ const provider = new GoogleAuthProvider(firebaseApp);
 onAuthStateChanged(auth, user=>{
     if (user != null) {
         console.log("logged in.");
-        console.log(user);
         $.post("/signedin",
         {
             val: true,
             user: [user.displayName, user.uid]
         });
-        window.location.href = "/main";
+        location.href = "/main";
     }
 
     else
@@ -37,7 +36,6 @@ onAuthStateChanged(auth, user=>{
 })
 
 const google_btn = document.querySelector(".google");
-const signout_btn = document.querySelector(".signout");
 
 google_btn.addEventListener("click", function(){
     signInWithPopup(auth, provider)
@@ -53,16 +51,6 @@ google_btn.addEventListener("click", function(){
       });
 })
 
-signout_btn.addEventListener("click", function(){
-    signOut(auth).then(() => {
-        // Sign-out successful.
-        console.log("signed out.");
-        location.href = "/"
-      }).catch((error) => {
-        // An error happened.
-        console.log("error");
-      });
-})
 
 
 

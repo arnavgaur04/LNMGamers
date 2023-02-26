@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="slot_add.js" type="module" defer></script>
     <title>Successful</title>
 </head>
 <body>
     Successful!!
+
+    <script defer>
+        $.post("/success",
+            function(data, status){
+                console.log(data.val);
+                var arr = data.val[1];
+        });
+    </script>
 </body>
 </html>

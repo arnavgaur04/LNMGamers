@@ -2,10 +2,10 @@
   "name": "new-folder",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "back.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node back.js",
+    "dev": "nodemon back.js"
   },
   "author": "",
   "license": "ISC",

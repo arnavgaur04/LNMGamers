@@ -30,8 +30,8 @@
     </div>
 
     <div class="slots_container container">
-      <form action="/payment" method="POST">
-        <button class="submit" id="submit" style="display: none;">submit</button>
+      <form action="/payment" method="POST" onsubmit="post_msg()">
+        <button type="submit" class="submit" id="submit" style="display: none;">submit</button>
         <table>
             <tr>
               <th>Select</th>
