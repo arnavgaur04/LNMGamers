@@ -21,6 +21,7 @@ onAuthStateChanged(auth, user=>{
             val: true,
             user: [user.displayName, user.uid]
         });
+        
         location.href = "/main";
     }
 

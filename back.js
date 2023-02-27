@@ -1,6 +1,6 @@
 var express = require('express');
 const app = express();
-var sign_val, user_data, slot, split, length, pay_res, price;
+var sign_val, user_data, slot, pay_res, price;
 var slot = new Array();
 app.use(express.static("./src")); 
 app.use(express.urlencoded({extended: true}));
@@ -9,19 +9,15 @@ app.set('view engine', 'ejs');
 app.post('/signedin', (req, res)=>{
   sign_val = req.body.val;
   user_data = req.body.user;
-  console.log(sign_val);
   res.end();
 })
 
 app.post('/success', (req, res)=>{
   pay_res = req.body.result;
-  if (slot[0].length == 1) {
-    slot[0] = slot;
-  }
-  console.log(slot);
   res.json(
     {
-      val: ["true", slot]
+      val: ["true", slot],
+      user_info: user_data
     }
   );
   res.end();
@@ -35,7 +31,6 @@ app.get('/admin', (req, res)=>{
 
   else
   {
-    console.log(user_data);
     res.send("Not allowed!");
   }
 })
@@ -56,8 +51,41 @@ app.post('/pay', (req, res)=>{
 })
 
 app.post('/payment', (req, res)=>{
-  slot = req.body.slots;
-  res.render("payment", {Price: price*100});
+  if (req.body.slots[0].length == 1) {
+    var arr = new Array();
+    arr.push(req.body.slots[0]);
+    slot = arr;
+  }
+
+  else
+  {
+    for (let i = 0; i < req.body.slots.length; i++) {
+      slot.push(req.body.slots[i]);
+    }
+  }
+
+  if (slot[0] == 8) {
+    slot.push("9 1");
+  }
+
+  else if (slot[0] == 9) {
+    slot.push("8 1");
+  }
+
+  else
+  {
+    for (let i = 0; i < slot.length; i++) {
+      if (slot[i][0] == 8) {
+        slot.push("9 1");
+      }
+      
+      else if (slot[i][0] == 9) {
+        slot.push("8 1");
+      }
+    }
+  }
+
+  res.render("payment", {Price: price});
 })
 
 app.get('/main', (req, res)=>{
@@ -71,8 +99,16 @@ app.get('/main', (req, res)=>{
   }
 })
 
-app.listen(5000, ()=>{
-  console.log('Connected at port 5000....');
+app.post('/user', (req, res)=>{
+  res.json(
+    {
+      user_info: user_data
+    }
+  );
+})
+
+app.listen(80, ()=>{
+  console.log('Connected at port 80....');
 })
 
 

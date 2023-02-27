@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-app.js';
-import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
+import { getFirestore, doc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDLoZhE6AwmQKH-6X12-behouwg5GlOiI8",
@@ -16,8 +16,8 @@ const db = getFirestore(firebaseApp);
 
 $.post("/success",
     function(data, status){
-        console.log(data.val[1]);
         var arr = data.val[1];
+        var user_id = data.user_info[1];
 
         for (let i = 0; i < arr.length; i++) {
             var location = "slots/slot_" + arr[i][0];
@@ -27,26 +27,19 @@ $.post("/success",
             }
             
             setDoc(data, docData, { merge: true });
-            console.log(data.id);
         }
+        
+        location = "user/" + user_id;
+        data = doc(db, location);
+        const docData = {};
+
+        for (let i = 0; i < arr.length; i++) {
+            docData["slot_"+(Number(arr[i][0])+1)] = "true";
+        }
+            
+        updateDoc(data, docData);
 
 });
-
-
-
-
-// try {
-//     const docRef = await addDoc(collection(db, "test"), {
-//       first: "Ada",
-//       last: "Lovelace",
-//       born: 1815
-//     });
-//     console.log("Document written with ID: ", docRef.id);
-//   } catch (e) {
-//     console.error("Error adding document: ", e);
-//   }
-
-
 
 
 

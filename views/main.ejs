@@ -17,271 +17,287 @@
   <script src="main.js" defer></script>
   <script src="signout.js" type="module" defer></script>
   <script src="slot.js" type="module" defer></script>
+  <script src="user.js" type="module" defer></script>
   <link rel="icon" type="image/x-icon" href="favicon_lnmgamers.png">
 </head>
 
-<body style="font-family: 'DM Sans', sans-serif;">
-  <div class="profile">
-    <div class="top favicon">
-      <image href="favicon_lnmgamers.png"></image>
+<body onload="loader()" style="font-family: 'DM Sans', sans-serif;">
+  <div id="loader"></div>
+  <div class="animate-bottom" id="after_load">
+    <div class="profile">
+      <div class="top name">
+        Hey! <%=Name%>
+      </div>
+      
+      <div class="top date">
+        Date
+      </div>
+  
+      <div>
+        <button class="top signout">
+          Sign Out
+        </button>
+      </div>
     </div>
-    
-    <div class="top name">
-      Hey! <%=Name%>
+  
+    <div class="logo">
     </div>
-    
-    <div class="top date">
-      Date
+  
+    <div class="slots_container container">
+      <form action="/payment" method="POST" onsubmit="post_msg()">
+        <button class="submit" id="submit" style="display: none;">submit</button>
+        <table>
+          <tr>
+            <th>Select</th>
+            <th>Available Slot Timings</th>
+            <th>Number of Players</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot0" type="checkbox" id="fname" name="slots" value="0 1"><br>
+              </div>
+            </td>
+            <td>10am - 11am</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(0)"></div>
+                </div>
+                <div class="value slot1"></div>
+                <div class="triangle-buttons" onclick="right(0)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot1" type="checkbox" id="fname" name="slots" value="1 1"><br>
+              </div>
+            </td>
+            <td>11:15am - 12:15pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(1)"></div>
+                </div>
+                <div class="value slot2"></div>
+                <div class="triangle-buttons" onclick="right(1)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot2" type="checkbox" id="fname" name="slots" value="2 1"><br>
+              </div>
+            </td>
+            <td>12:30pm - 1:30pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(2)"></div>
+                </div>
+                <div class="value slot3"></div>
+                <div class="triangle-buttons" onclick="right(2)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot3" type="checkbox" id="fname" name="slots" value="3 1"><br>
+              </div>
+            </td>
+            <td>1:45pm - 2:45pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(3)"></div>
+                </div>
+                <div class="value slot4"></div>
+                <div class="triangle-buttons" onclick="right(3)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot4" type="checkbox" id="fname" name="slots" value="4 1"><br>
+              </div>
+            </td>
+            <td>3pm - 4pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(4)"></div>
+                </div>
+                <div class="value slot5"></div>
+                <div class="triangle-buttons" onclick="right(4)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot5" type="checkbox" id="fname" name="slots" value="5 1"><br>
+              </div>
+            </td>
+            <td>4:15pm - 5:15pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(5)"></div>
+                </div>
+                <div class="value slot6"></div>
+                <div class="triangle-buttons" onclick="right(5)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot6" type="checkbox" id="fname" name="slots" value="6 1"><br>
+              </div>
+            </td>
+            <td>5:30pm - 6:30pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(6)"></div>
+                </div>
+                <div class="value slot7"></div>
+                <div class="triangle-buttons" onclick="right(6)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot7" type="checkbox" id="fname" name="slots" value="7 1"><br>
+              </div>
+            </td>
+            <td>6:45pm - 7:45pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(7)"></div>
+                </div>
+                <div class="value slot7"></div>
+                <div class="triangle-buttons" onclick="right(7)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot8" type="checkbox" id="fname" name="slots" value="8 1"><br>
+              </div>
+            </td>
+            <td>8pm - 9pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(8)"></div>
+                </div>
+                <div class="value slot7"></div>
+                <div class="triangle-buttons" onclick="right(8)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <div class="input"><input class="radio inp_slot9" type="checkbox" id="fname" name="slots" value="9 1"><br>
+              </div>
+            </td>
+            <td>8pm - 10pm</td>
+            <td>
+              <div class="counter">
+                <div class="triangle-buttons">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(9)"></div>
+                </div>
+                <div class="value slot7"></div>
+                <div class="triangle-buttons" onclick="right(9)">
+                  <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="image"></div>
+            </td>
+          </tr>
+        </table>
+      </form>
+  
     </div>
-
-    <div>
-      <button class="top signout">
-        Sign Out
-      </button>
+  
+    <div class="buttons">
+      <button class="past_booking btn">Past Bookings</button>
+      <button class="clear btn">Clear</button>
+      <button class="book_now btn" onclick="submit()">Book Now</button>
     </div>
   </div>
 
-  <div class="logo">
-  </div>
+  <script>
+    var myVar;
+    document.getElementById("after_load").style.display = "none";
+    function loader() {
+      myVar = setTimeout(showPage, 3000);
+    }
 
-  <div class="slots_container container">
-    <form action="/payment" method="POST" onsubmit="post_msg()">
-      <button class="submit" id="submit" style="display: none;">submit</button>
-      <table>
-        <tr>
-          <th>Select</th>
-          <th>Available Slot Timings</th>
-          <th>Number of Players</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot0" type="checkbox" id="fname" name="slots" value="0 1"><br>
-            </div>
-          </td>
-          <td>10am - 11am</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(0)"></div>
-              </div>
-              <div class="value slot1"></div>
-              <div class="triangle-buttons" onclick="right(0)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot1" type="checkbox" id="fname" name="slots" value="1 1"><br>
-            </div>
-          </td>
-          <td>11:15am - 12:15pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(1)"></div>
-              </div>
-              <div class="value slot2"></div>
-              <div class="triangle-buttons" onclick="right(1)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot2" type="checkbox" id="fname" name="slots" value="2 1"><br>
-            </div>
-          </td>
-          <td>12:30pm - 1:30pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(2)"></div>
-              </div>
-              <div class="value slot3"></div>
-              <div class="triangle-buttons" onclick="right(2)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot3" type="checkbox" id="fname" name="slots" value="3 1"><br>
-            </div>
-          </td>
-          <td>1:45pm - 2:45pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(3)"></div>
-              </div>
-              <div class="value slot4"></div>
-              <div class="triangle-buttons" onclick="right(3)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot4" type="checkbox" id="fname" name="slots" value="4 1"><br>
-            </div>
-          </td>
-          <td>3pm - 4pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(4)"></div>
-              </div>
-              <div class="value slot5"></div>
-              <div class="triangle-buttons" onclick="right(4)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot5" type="checkbox" id="fname" name="slots" value="5 1"><br>
-            </div>
-          </td>
-          <td>4:15pm - 5:15pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(5)"></div>
-              </div>
-              <div class="value slot6"></div>
-              <div class="triangle-buttons" onclick="right(5)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot6" type="checkbox" id="fname" name="slots" value="6 1"><br>
-            </div>
-          </td>
-          <td>5:30pm - 6:30pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(6)"></div>
-              </div>
-              <div class="value slot7"></div>
-              <div class="triangle-buttons" onclick="right(6)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot7" type="checkbox" id="fname" name="slots" value="7 1"><br>
-            </div>
-          </td>
-          <td>6:45pm - 7:45pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(7)"></div>
-              </div>
-              <div class="value slot7"></div>
-              <div class="triangle-buttons" onclick="right(7)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot8" type="checkbox" id="fname" name="slots" value="8 1"><br>
-            </div>
-          </td>
-          <td>8pm - 9pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(8)"></div>
-              </div>
-              <div class="value slot7"></div>
-              <div class="triangle-buttons" onclick="right(8)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="input"><input class="radio inp_slot9" type="checkbox" id="fname" name="slots" value="9 1"><br>
-            </div>
-          </td>
-          <td>8pm - 10pm</td>
-          <td>
-            <div class="counter">
-              <div class="triangle-buttons">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--l" onclick="left(9)"></div>
-              </div>
-              <div class="value slot7"></div>
-              <div class="triangle-buttons" onclick="right(9)">
-                <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="image"></div>
-          </td>
-        </tr>
-      </table>
-    </form>
-
-  </div>
-
-  <div class="buttons">
-    <button class="past_booking btn">Past Bookings</button>
-    <button class="clear btn">Clear</button>
-    <button class="book_now btn" onclick="submit()">Book Now</button>
-  </div>
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("after_load").style.display = "block";
+      for (let i = 0; i < 10; i++) {
+        document.querySelectorAll(".radio")[i].checked = false;
+      }
+    }
+  </script>
 
 </body>
 

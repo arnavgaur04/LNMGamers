@@ -28,7 +28,6 @@ th
     border-collapse: collapse;
     background-color: rgb(255, 255, 255);
     padding: 1vw;
-    /* position: fixed; */
 }
 
 td
@@ -39,8 +38,6 @@ td
 
 input[type="radio"] {
     -webkit-appearance: none;
-    /* height: 16px;
-    width: 18px; */
     padding: 0;
     box-sizing: unset;
     border-radius: 50%;
@@ -50,15 +47,53 @@ input[type="radio"] {
     vertical-align: middle;
 }
 
-
 input[type="radio"]:checked {
     background-color: rgb(67, 220, 105);
 }
 
-/* form
-{
-    background-color: aqua;
-} */
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
 
 .top
 {
@@ -76,7 +111,6 @@ input[type="radio"]:checked {
     margin-top: 2vw;
     padding-left: 5vw;
     padding-right: 5vw;
-    /* background-color: aliceblue; */
     display: flex;
     justify-content: space-between;
 }
@@ -98,6 +132,7 @@ input[type="radio"]:checked {
     width: 80vw;
     height: 20vh;
     font-size: 50px;
+    margin-top: 3vw;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -106,21 +141,19 @@ input[type="radio"]:checked {
 .slots_container
 {
     width: 70vw;
-    /* height: 55vh; */
     border-radius: 1vw;
-    /* display: flex; */
+    margin-top: 3vw;
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(255, 255, 255);
-    /* padding: 1vw; */
     overflow-y: scroll;
 }
 
 .buttons
 {
-    /* background-color: aquamarine; */
     width: 70vw;
     height: 4vw;
+    margin-top: 3vw;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5vw;
@@ -176,10 +209,7 @@ button:hover
 
 .triangle-buttons {
     align-items: center;
-    /* display: flex; */
-    /* justify-content: center; */
     padding: 0.5vw;
-    /* height: 3vw; */
 }
 
 .triangle-buttons__triangle {

@@ -26,21 +26,3 @@ for (let index = 0; index < 10; index++) {
 }
 
 
-
-
-
-// try {
-//     const docRef = await addDoc(collection(db, "test"), {
-//       first: "Ada",
-//       last: "Lovelace",
-//       born: 1815
-//     });
-//     console.log("Document written with ID: ", docRef.id);
-//   } catch (e) {
-//     console.error("Error adding document: ", e);
-//   }
-
-
-
-
-
