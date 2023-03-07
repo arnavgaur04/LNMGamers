@@ -1,5 +1,8 @@
 var express = require('express');
 const app = express();
+var request = require('request');
+var i = 77780;
+var url;
 var sign_val, user_data, slot, pay_res, price;
 var slot = new Array();
 app.use(express.static("./src")); 
@@ -48,6 +51,7 @@ app.get('/success', (req, res)=>{
 
 app.post('/pay', (req, res)=>{
   price = req.body.pay;
+  
 })
 
 app.post('/payment', (req, res)=>{
@@ -85,10 +89,40 @@ app.post('/payment', (req, res)=>{
     }
   }
 
-  res.render("payment", {Price: price});
+  var id = String(i++);
+  var pri = String(price);
+  var options = {
+    'method': 'POST',
+    'url': 'https://merchant.upigateway.com/api/create_order',
+    'headers': {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "key": "d12b0d74-6f32-43fe-8e62-fc04d284fbfc",
+      "client_txn_id": id,
+      "amount": pri,
+      "p_info": "Slots",
+      "customer_name": user_data[0],
+      "customer_email": user_data[2],
+      "customer_mobile": "9090909090",
+      "redirect_url": "http://lnmgamers.in",
+      "udf1": "user defined field 1",
+      "udf2": "user defined field 2",
+      "udf3": "user defined field 3"
+    })
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    var json = JSON.parse(response.body);
+    url = json.data.payment_url;
+    console.log(url);
+    res.redirect(url);
+  });
+
 })
 
 app.get('/main', (req, res)=>{
+  console.log(user_data);
   if (sign_val == "true") {
     res.render('main', {Name: user_data[0]});
   }

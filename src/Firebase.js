@@ -19,9 +19,8 @@ onAuthStateChanged(auth, user=>{
         $.post("/signedin",
         {
             val: true,
-            user: [user.displayName, user.uid]
+            user: [user.displayName, user.uid, user.email]
         });
-        
         location.href = "/main";
     }
 
