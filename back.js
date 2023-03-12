@@ -1,48 +1,57 @@
 var express = require('express');
 const app = express();
 var request = require('request')
-var i = 80210;
+var i = 80330;
 var url;
 var sign_val, user_data, pay_res, price;
+
 app.use(express.static("./src")); 
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-app.post('/success', (req, res)=>{
-  pay_res = req.body.result;
-  res.json(
-    {
-      val: ["true", slot],
-      user_info: user_data
-    }
-  );
-  res.end();
-})
-
 
 app.get('/admin', (req, res)=>{
     res.render('admin');
 })
 
 app.get('/success', (req, res)=>{
-  console.log(req.body);
-  res.send("success");
-  // var options = {
-  //   'method': 'POST',
-  //   'url': 'https://merchant.upigateway.com/api/check_order_status',
-  //   'headers': {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify({
-  //     "key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  //     "client_txn_id": "abcd1234",
-  //     "txn_date": "15-01-2022"
-  //   })
-  
-  // };
-  // request(options, function (error, response) {
-  //   if (error) throw new Error(error);
-  //   console.log(response.body);
-  // });
+  console.log(req.query);
+  var date = new Date();
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  if (month < 10) {
+    month = "0"+month;
+  }
+  var year = date.getFullYear();
+  console.log(day);
+  console.log(month);
+  console.log(year);
+  var options = {
+    'method': 'POST',
+    'url': 'https://merchant.upigateway.com/api/check_order_status',
+    'headers': {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "key": "d12b0d74-6f32-43fe-8e62-fc04d284fbfc",
+      "client_txn_id": req.query.client_txn_id,
+      "txn_date": day + "-" + month + "-" + year
+    })
+    
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    var out = JSON.parse(response.body);
+    if (out.status == true) {
+      console.log(out.data.status);
+      res.send(out.data.status);
+    }
+
+    else
+    {
+      console.log("not found");
+      res.send("not found");
+    }
+  });
 })
 
 app.post('/pay', (req, res)=>{
@@ -159,7 +168,7 @@ app.post('/payment', (req, res)=>{
 })
 
 app.get('/main', (req, res)=>{
-    res.render('main');
+  res.render('main');
 })
 
 app.listen(80, ()=>{

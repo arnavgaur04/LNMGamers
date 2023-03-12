@@ -81,7 +81,8 @@ Form.onsubmit = function (event) {
                 const docData = {
                     "Slot_number": Number(arr[i][0])
                 }
-                
+                var slot = "Slot_number" + arr[i][0];
+                localStorage.setItem(slot, arr[i])
                 setDoc(data, docData, { merge: true });
             }
             
