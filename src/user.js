@@ -74,33 +74,8 @@ Form.onsubmit = function (event) {
             data: arr,
         },
         function (data, status) {
-            // window.location = data;
-            var arr = data.val[1];
             var url = data.link;
-            for (let i = 0; i < arr.length; i++) {
-                var location = "slots/slot_" + arr[i][0];
-                var data = doc(db, location);
-                const docData = {
-                    "Slot_number": Number(arr[i][0]),
-                    "Name": user_name
-                }
-                var slot = "Slot_number" + arr[i][0];
-                localStorage.setItem(slot, arr[i])
-                setDoc(data, docData, { merge: true });
-            }
-            
-            location = "user/" + user_id;
-            data = doc(db, location);
-            const docData = {};
-
-            for (let i = 0; i < arr.length; i++) {
-                docData["slot_"+(Number(arr[i][0]))] = document.querySelector('.date').innerHTML;
-                if (arr[i][0] == 8 || arr[i][0] == 9) {
-                    break;
-                }
-            }
-                
-            updateDoc(data, docData);
+            // window.location = data;
             console.log(data);
             window.location = url;
         }

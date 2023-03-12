@@ -1,7 +1,7 @@
 var express = require('express');
 const app = express();
 var request = require('request')
-var i = 80700;
+var i = 700;
 var url;
 
 app.use(express.static("./src")); 
@@ -155,7 +155,6 @@ app.post('/payment', (req, res)=>{
     url = json.data.payment_url;
     res.json(
       {
-        val: ["true", slot],
         link: url
       }
     );

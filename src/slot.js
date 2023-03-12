@@ -31,8 +31,12 @@ for (let index = 0; index < 10; index++) {
         localStorage.removeItem("Slot_number" + index);
         document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = false;
       }
-      console.log("Document data: " + docSnap.data().Slot_number);
-      document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = true;
+
+      else
+      {
+        console.log("Document data: " + docSnap.data().Slot_number);
+        document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = true;
+      }
     } else {
       console.log("No such document!");
     }
