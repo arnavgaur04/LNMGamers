@@ -24,7 +24,7 @@ onAuthStateChanged(auth, user=>{
     else
     {
         console.log("No user");
-        location.href = "/";
+        // location.href = "/";
     }
 })
 

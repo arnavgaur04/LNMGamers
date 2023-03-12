@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get('/admin', (req, res)=>{
-    res.render('admin');
+  res.render('admin');
 })
 
 app.get('/success', (req, res)=>{
@@ -52,10 +52,6 @@ app.get('/success', (req, res)=>{
       res.send("not found");
     }
   });
-})
-
-app.post('/pay', (req, res)=>{
-  price = req.body.pay;
 })
 
 app.post('/payment', (req, res)=>{

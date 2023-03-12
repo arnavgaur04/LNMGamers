@@ -5,6 +5,7 @@ if (localStorage.getItem("uid") == null) {
     document.querySelector("body").innerHTML = "NOT ALLOWED";
     document.body.style.color = "white";
     console.log("uid hahahahhahhahahaha");
+    window.location = '/';
 }
 
 else
@@ -79,7 +80,8 @@ Form.onsubmit = function (event) {
                 var location = "slots/slot_" + arr[i][0];
                 var data = doc(db, location);
                 const docData = {
-                    "Slot_number": Number(arr[i][0])
+                    "Slot_number": Number(arr[i][0]),
+                    "Name": user_name
                 }
                 var slot = "Slot_number" + arr[i][0];
                 localStorage.setItem(slot, arr[i])
@@ -91,7 +93,7 @@ Form.onsubmit = function (event) {
             const docData = {};
 
             for (let i = 0; i < arr.length; i++) {
-                docData["slot_"+(Number(arr[i][0]))] = "true";
+                docData["slot_"+(Number(arr[i][0]))] = document.querySelector('.date').innerHTML;
                 if (arr[i][0] == 8 || arr[i][0] == 9) {
                     break;
                 }

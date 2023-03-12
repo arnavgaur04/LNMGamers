@@ -23,7 +23,7 @@ for (let index = 0; index < 10; index++) {
 }
 for (let i = 0; i < arr.length; i++) {
     await deleteDoc(doc(db, "slots", "slot_"+arr[i][0]));
-    localStorage.removeItem("Slot_number" + index)
+    localStorage.removeItem("Slot_number" + i)
 }
 
 
