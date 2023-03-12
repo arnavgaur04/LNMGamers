@@ -36,8 +36,8 @@ for (let i = 0; i < arr.length; i++) {
     setDoc(data, docData, { merge: true });
 }
 
-location = "user/" + user_id;
-data = doc(db, location);
+var location = "user/" + user_id;
+var data = doc(db, location);
 const docData = {};
 
 for (let i = 0; i < arr.length; i++) {
