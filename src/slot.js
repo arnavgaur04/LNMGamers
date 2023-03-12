@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-app.js';
-import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
 
 if (localStorage.getItem("uid") == null) {
   document.querySelector("body").innerHTML = "NOT ALLOWED";
@@ -25,12 +25,12 @@ for (let index = 0; index < 10; index++) {
     var docRef = doc(db, "slots", slot);
     var docSnap = await getDoc(docRef);
 
-    if (localStorage.getItem("Slot_number" + index) != null) {
-      await deleteDoc(doc(db, "slots", "slot_"+index));
-      localStorage.removeItem("Slot_number" + index);
-    }
-
     if (docSnap.exists()) {
+      if (localStorage.getItem("Slot_number" + index) != null) {
+        deleteDoc(doc(db, "slots", "slot_"+index));
+        localStorage.removeItem("Slot_number" + index);
+        document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = false;
+      }
       console.log("Document data: " + docSnap.data().Slot_number);
       document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = true;
     } else {

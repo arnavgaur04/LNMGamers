@@ -1,9 +1,8 @@
 var express = require('express');
 const app = express();
 var request = require('request')
-var i = 80600;
+var i = 80700;
 var url;
-var sign_val, user_data, pay_res, price;
 
 app.use(express.static("./src")); 
 app.use(express.urlencoded({extended: true}));
