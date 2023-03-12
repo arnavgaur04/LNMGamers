@@ -1,3 +1,27 @@
+if (localStorage.getItem("uid") == null) {
+    document.querySelector("body").innerHTML = "NOT ALLOWED";
+    console.log("uid hahahahhahhahahaha");
+}
+
+
+else
+{
+
+var myVar;
+document.getElementById("after_load").style.display = "none";
+function loader() {
+  myVar = setTimeout(showPage, 3000);
+}
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("after_load").style.display = "block";
+  for (let i = 0; i < 10; i++) {
+    document.querySelectorAll(".radio")[i].checked = false;
+  }
+}
+
+document.body.onload = loader();
+
 var c = new Array();
 var val;
 var input = new Array();
@@ -61,7 +85,7 @@ function right(i) {
         
             else if(c[i] == 4)
             {
-                price[i] = 250;
+                price[i] = 240;
                 image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         }
@@ -91,7 +115,7 @@ function right(i) {
         
             else if(c[i] == 4)
             {
-                price[i] = 500;
+                price[i] = 480;
                 image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         }
@@ -131,7 +155,7 @@ function left(i) {
         
             else if(c[i] == 4)
             {
-                price[i] = 250;
+                price[i] = 240;
                 image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         }
@@ -161,7 +185,7 @@ function left(i) {
         
             else if(c[i] == 4)
             {
-                price[i] = 500;
+                price[i] = 480;
                 image[i].setAttribute("style", "background-image: url('four-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         }
@@ -176,13 +200,35 @@ function left(i) {
 
 $(".radio").click(function()
 {
+    if (this.checked == true && this.value[0] == 9) {
+        Price = Price - price[8];
+        console.log(price[8]);
+        price[8] = 0;
+        input[8].value = "8 1";
+        c[8] = 0;
+        value[8].innerHTML = 1;
+        image[8].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+        document.querySelectorAll('.radio')[8].checked = false;
+    }
+    
+    if (this.checked == true && this.value[0] == 8) {
+        Price = Price - price[9];
+        console.log(price[8]);
+        price[9] = 0;
+        input[9].value = "9 1";
+        c[9] = 0;
+        value[9].innerHTML = 1;
+        image[9].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+        document.querySelectorAll('.radio')[9].checked = false;
+    }
+
     if ($('.radio:checked').length > 3) {
         this.checked = false;
     }
 
     if ((this).checked == false) {
         val = (this).value[0];
-        
+        this.value = this.value[0] + " 1";
         Price = Price - price[val];
         price[val] = 0;
         c[val] = 1;
@@ -247,15 +293,8 @@ function submit() {
     document.getElementById("submit").click();
 }
 
-function post_msg() {
-    $.post("/pay",
-    {
-        pay: Price
-    });
-    // console.log("submitted");
+
 }
-
-
 
 
 

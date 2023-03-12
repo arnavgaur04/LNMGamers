@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,13 +20,13 @@
   <link rel="icon" type="image/x-icon" href="favicon_lnmgamers.png">
 </head>
 
-<body onload="loader()" style="font-family: 'DM Sans', sans-serif;">
+<body style="font-family: 'DM Sans', sans-serif;">
   <div id="loader"></div>
   <div class="animate-bottom" id="after_load">
     <div class="profile">
       <div>
         <button class="top name">
-          Hey! <%=Name%>
+      
         </button>
       </div>
       
@@ -48,7 +47,7 @@
     </div>
   
     <div class="slots_container container">
-      <form action="/payment" method="POST" onsubmit="post_msg()">
+      <form>
         <button class="submit" id="submit" style="display: none;">submit</button>
         <table>
           <tr>
@@ -286,22 +285,6 @@
       <button class="book_now btn" onclick="submit()">Book Now</button>
     </div>
   </div>
-
-  <script>
-    var myVar;
-    document.getElementById("after_load").style.display = "none";
-    function loader() {
-      myVar = setTimeout(showPage, 3000);
-    }
-
-    function showPage() {
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("after_load").style.display = "block";
-      for (let i = 0; i < 10; i++) {
-        document.querySelectorAll(".radio")[i].checked = false;
-      }
-    }
-  </script>
 
 </body>
 

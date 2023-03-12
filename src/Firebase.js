@@ -12,26 +12,19 @@ const firebaseApp = initializeApp({
 })
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider(firebaseApp);
-
 onAuthStateChanged(auth, user=>{
     if (user != null) {
-        console.log("logged in.");
-        $.post("/signedin",
-        {
-            val: true,
-            user: [user.displayName, user.uid, user.email]
-        });
+        console.log("user signed in");
+        localStorage.setItem("uid",user.uid);
+        localStorage.setItem("name",user.displayName);
+        localStorage.setItem("email",user.email);
         location.href = "/main";
     }
 
     else
     {
         console.log("No user");
-        $.post("/signedin",
-            {
-                val: false,
-                user: null
-            });
+        location.href = "/";
     }
 })
 

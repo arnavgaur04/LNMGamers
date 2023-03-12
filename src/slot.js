@@ -1,5 +1,13 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-app.js';
 import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
+
+if (localStorage.getItem("uid") == null) {
+  document.querySelector("body").innerHTML = "NOT ALLOWED";
+  console.log("uid hahahahhahhahahaha");
+}
+
+else 
+{
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDLoZhE6AwmQKH-6X12-behouwg5GlOiI8",
     authDomain: "lnmgamers-87e3f.firebaseapp.com",
@@ -24,5 +32,5 @@ for (let index = 0; index < 10; index++) {
       console.log("No such document!");
     }
 }
-
+}
 
