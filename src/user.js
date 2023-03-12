@@ -54,12 +54,6 @@ else {
     setDoc(Data, docData, { merge: true });
 }
 
-for (let index = 0; index < 10; index++) {
-    if (localStorage.getItem("Slot_number" + index) != null) {
-        await deleteDoc(doc(db, "slots", "slot_"+index));
-        localStorage.removeItem("Slot_number" + index);
-    }    
-} 
 
 const Form = document.querySelector('form');
 

@@ -25,12 +25,18 @@ for (let index = 0; index < 10; index++) {
     var docRef = doc(db, "slots", slot);
     var docSnap = await getDoc(docRef);
 
+    if (localStorage.getItem("Slot_number" + index) != null) {
+      await deleteDoc(doc(db, "slots", "slot_"+index));
+      localStorage.removeItem("Slot_number" + index);
+    }
+
     if (docSnap.exists()) {
       console.log("Document data: " + docSnap.data().Slot_number);
       document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = true;
     } else {
       console.log("No such document!");
     }
-}
+  }
+
 }
 
