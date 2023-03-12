@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-app.js';
-import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
+import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
 
 if (localStorage.getItem("uid") == null) {
     document.querySelector("body").innerHTML = "NOT ALLOWED";
@@ -53,6 +53,13 @@ else {
     
     setDoc(Data, docData, { merge: true });
 }
+
+for (let index = 0; index < 10; index++) {
+    if (localStorage.getItem("Slot_number" + index) != null) {
+        await deleteDoc(doc(db, "slots", "slot_"+index));
+        localStorage.removeItem("Slot_number" + index);
+    }    
+} 
 
 const Form = document.querySelector('form');
 

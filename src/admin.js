@@ -21,7 +21,6 @@ if (localStorage.getItem("uid") != "fltwjO5H2pc3vr4eoxFuzC5Dww23") {
 else
 {
     console.log("hi");
-    var node = document.createElement("li");
     const arr = ["10-11", "11-12", "12:30 - 1:30", "1:45 - 2:45", "3-4", "4:15 - 5:15", "5:30 - 6:30", "6:45 - 7:45", "8-9", "8-10"]
     for (let index = 0; index < 10; index++) {
         var slot = "slot_" + index;
@@ -29,6 +28,7 @@ else
         var docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             console.log("Document data: " + docSnap.data().Slot_number);
+            var node = document.createElement("li");
             const textnode = document.createTextNode(arr[docSnap.data().Slot_number] + "   " + docSnap.data().Name);
             node.appendChild(textnode);
             document.getElementById("myList").appendChild(node);
