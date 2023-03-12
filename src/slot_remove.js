@@ -21,6 +21,9 @@ for (let index = 0; index < 10; index++) {
     }
 }
 
+var user_name = localStorage.getItem("name")
+var user_id = localStorage.getItem("uid")
+
 for (let i = 0; i < arr.length; i++) {
     var location = "slots/slot_" + arr[i][0];
     var data = doc(db, location);
