@@ -59,6 +59,29 @@ const Form = document.querySelector('form');
 
 Form.onsubmit = function (event) {
     
+    event.preventDefault();
+    var arr = {};
+    var lst = new Array();
+    var fdata = new FormData(Form);
+
+    for (const item of fdata) {
+        console.log(item[0], item[1]);
+        lst.push(item[1]);
+        localStorage.setItem("Slot_number"+item[1][0], item[1]);
+    }
+
+    fdata.append("name", user_name);
+    fdata.append("email", user_email);
+
+    for (const item of fdata) {
+        console.log(item[0], item[1]);
+    }
+
+    arr["slots"] = lst;
+    arr["name"] = user_name;
+    arr["email"] = user_email;
+    
+    console.log(arr);
 
     $.post("/payment",
         {
@@ -66,29 +89,7 @@ Form.onsubmit = function (event) {
         },
         function (data, status) {
             var url = data.link;
-            console.log(data);
-            event.preventDefault();
-            var arr = {};
-            var lst = new Array();
-            var data = new FormData(Form);
-            for (const item of data) {
-                console.log(item[0], item[1]);
-                lst.push(item[1]);
-                localStorage.setItem("Slot_number"+item[1][0], item[1]);
-            }
-
-            data.append("name", user_name);
-            data.append("email", user_email);
-
-            for (const item of data) {
-                console.log(item[0], item[1]);
-            }
-            arr["slots"] = lst;
-            arr["name"] = user_name;
-            arr["email"] = user_email;
-            
-            console.log(arr);
-            
+            console.log(data);            
             window.location = url;
         }
     )
