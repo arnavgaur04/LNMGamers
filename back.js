@@ -1,7 +1,7 @@
 var express = require('express');
 const app = express();
 var request = require('request')
-var i = 80330;
+var i = 80400;
 var url;
 var sign_val, user_data, pay_res, price;
 
@@ -43,7 +43,7 @@ app.get('/success', (req, res)=>{
     var out = JSON.parse(response.body);
     if (out.status == true) {
       console.log(out.data.status);
-      res.send(out.data.status);
+      res.render(out.data.status);
     }
 
     else
