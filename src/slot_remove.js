@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-app.js';
-import { getFirestore, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
+import { getFirestore, doc, updateDoc, setDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
 
 var arr = new Array();
 
