@@ -38,10 +38,10 @@ for (let i = 0; i < arr.length; i++) {
 
 var location = "user/" + user_id;
 var data = doc(db, location);
-const docData = {};
-
+var docData = {};
+var date = new Date();
 for (let i = 0; i < arr.length; i++) {
-    docData["slot_"+(Number(arr[i][0]))] = document.querySelector('.date').innerHTML;
+    docData["slot_"+(Number(arr[i][0]))] = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
     if (arr[i][0] == 8 || arr[i][0] == 9) {
         break;
     }
