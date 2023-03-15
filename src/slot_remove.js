@@ -23,9 +23,10 @@ for (let index = 0; index < 10; index++) {
 
 var user_name = localStorage.getItem("name")
 var user_id = localStorage.getItem("uid")
+var date = localStorage.getItem("date");
 
 for (let i = 0; i < arr.length; i++) {
-    var location = "slots/slot_" + arr[i][0];
+    var location = "slots/" + date + "/slots/slot_" + arr[i][0];
     var data = doc(db, location);
     const docData = {
         "Slot_number": Number(arr[i][0]),
@@ -39,9 +40,8 @@ for (let i = 0; i < arr.length; i++) {
 var location = "user/" + user_id;
 var data = doc(db, location);
 var docData = {};
-var date = new Date();
 for (let i = 0; i < arr.length; i++) {
-    docData["slot_"+(Number(arr[i][0]))] = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    docData["slot_"+(Number(arr[i][0]))] = date;
     if (arr[i][0] == 8 || arr[i][0] == 9) {
         break;
     }

@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-app.js';
-import { getFirestore, doc, getDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js';
 
 if (localStorage.getItem("uid") == null) {
   document.querySelector("body").innerHTML = "NOT ALLOWED";
@@ -17,30 +17,31 @@ const firebaseApp = initializeApp({
     appId: "1:523545220157:web:73a7c820be2dcce9e34654",
     measurementId: "G-B0LR1965GE"
 })
+
 console.log("hi");
 const db = getFirestore(firebaseApp);
 
-for (let index = 0; index < 10; index++) {
-    var slot = "slot_" + index;
-    var docRef = doc(db, "slots", slot);
-    var docSnap = await getDoc(docRef);
+$("a").click(async function()
+{
+    var dropbtn = document.querySelector(".dropbtn");
+    dropbtn.innerHTML = this.innerHTML;
 
-    if (docSnap.exists()) {
-      if (localStorage.getItem("Slot_number" + index) != null) {
-        deleteDoc(doc(db, "slots", "slot_"+index));
-        localStorage.removeItem("Slot_number" + index);
-        document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = false;
-      }
-
-      else
-      {
+    for (let index = 0; index < 10; index++) {
+      var slot = dropbtn.innerHTML;
+      var docRef = doc(db, "slots", slot, "slots", "slot_" + index);
+      var docSnap = await getDoc(docRef);
+  
+      if (docSnap.exists()) {
         console.log("Document data: " + docSnap.data().Slot_number);
-        document.querySelectorAll('.radio')[docSnap.data().Slot_number].disabled = true;
+        document.querySelectorAll('.radio')[index].disabled = true;
+
+      } else {
+        console.log("No such document!");
+        document.querySelectorAll('.radio')[index].disabled = false;
       }
-    } else {
-      console.log("No such document!");
     }
-  }
+})
+
 
 }
 

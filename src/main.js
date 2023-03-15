@@ -3,7 +3,6 @@ if (localStorage.getItem("uid") == null) {
     console.log("uid hahahahhahhahahaha");
 }
 
-
 else
 {
 
@@ -40,16 +39,6 @@ for (let i = 0; i < 10; i++) {
     value[i].innerHTML = 1;
 }
 image = document.querySelectorAll(".image");
-
-if (date.getHours() >= 20) {
-    date.setDate(date.getDate() + 1);
-    document.querySelector('.date').innerHTML = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
-}
-
-else
-{
-    document.querySelector('.date').innerHTML = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
-}
 
 for (let i = 0; i < 10; i++) {
     image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
@@ -298,6 +287,85 @@ for (let index = 0; index < 10; index++) {
         localStorage.removeItem("Slot_number" + index)
     }    
 }
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  var val;
+
+  for (let index = 0; index < 3; index++) {
+    var a = document.querySelectorAll('a')[index];
+    var date_now = new Date();
+    if (date_now.getHours() > 19) {
+        val = index + 1;
+    }
+    else
+    {
+        val = index;
+    }
+    result = date_now.setDate(date_now.getDate() + val);
+    result = new Date(result);
+    console.log(result);
+    a.innerHTML = result.getDate() + "-" + (result.getMonth()+1) + "-" + result.getFullYear();     
+  }
+
+  var dropbtn = document.querySelector(".dropbtn");
+
+  if (dropbtn.innerHTML == "Select date") {
+    localStorage.removeItem("date");
+
+    for (let index = 0; index < 10; index++) {
+        document.querySelectorAll('.radio')[index].disabled = true;
+    }
+  }
+
+  $("a").click(function()
+  {
+        var dropbtn = document.querySelector(".dropbtn");
+        dropbtn.innerHTML = this.innerHTML;
+        localStorage.setItem("date", this.innerHTML);
+        Price = 0;
+        for (let i = 0; i < 10; i++) {
+            value[i].innerHTML = 1;
+            c[i] = 1;
+            price[i] = 0;
+            image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
+        }
+        book_now.disabled = true;
+        book_now.innerHTML = "Book Now";
+
+        var myVar;
+        document.getElementById("after_load").style.display = "none";
+        document.getElementById("loader").style.display = "block";
+        function loader() {
+        myVar = setTimeout(showPage, 3000);
+        }
+        function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("after_load").style.display = "block";
+        for (let i = 0; i < 10; i++) {
+            document.querySelectorAll(".radio")[i].checked = false;
+        }
+        }
+
+        document.body.onload = loader();
+  })
+
 }
 
 
