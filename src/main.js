@@ -58,17 +58,17 @@ function right(i) {
             }
         
             if (c[i] == 1) {
-                price[i] = 80;
+                price[i] = 60;
                 image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
             else if (c[i] == 2) {
-                price[i] = 150;
+                price[i] = 120;
                 image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
             
             else if (c[i]==3) {
-                price[i] = 200;
+                price[i] = 180;
                 image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
@@ -88,17 +88,17 @@ function right(i) {
             }
         
             if (c[i] == 1) {
-                price[i] = 160;
+                price[i] = 120;
                 image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
             else if (c[i] == 2) {
-                price[i] = 300;
+                price[i] = 240;
                 image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
             
             else if (c[i]==3) {
-                price[i] = 400;
+                price[i] = 360;
                 image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
@@ -128,17 +128,17 @@ function left(i) {
             }
         
             if (c[i] == 1) {
-                price[i] = 80;
+                price[i] = 60;
                 image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
             else if (c[i] == 2) {
-                price[i] = 150;
+                price[i] = 120;
                 image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
             
             else if (c[i] == 3) {
-                price[i] = 200;
+                price[i] = 180;
                 image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
@@ -158,17 +158,17 @@ function left(i) {
             }
         
             if (c[i] == 1) {
-                price[i] = 160;
+                price[i] = 120;
                 image[i].setAttribute("style", "background-image: url('one-player.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
             else if (c[i] == 2) {
-                price[i] = 300;
+                price[i] = 240;
                 image[i].setAttribute("style", "background-image: url('two-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
             
             else if (c[i]==3) {
-                price[i] = 400;
+                price[i] = 360;
                 image[i].setAttribute("style", "background-image: url('three-players.png');background-position: center;background-size: contain;background-repeat: no-repeat;");
             }
         
@@ -230,12 +230,12 @@ $(".radio").click(function()
         val = (this).value[0];
 
         if (val == 9) {
-            price[val] = 160;
+            price[val] = 120;
         }
 
         else
         {
-            price[val] = 80;
+            price[val] = 60;
         }
 
         Price = Price + price[val];

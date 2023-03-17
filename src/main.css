@@ -95,19 +95,16 @@ input[type="radio"]:checked {
     to{ bottom:0; opacity:1 }
   }
 
-  .dropbtn {
-    background-color: #e41414;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropbtn:hover, .dropbtn:focus {
+  /* .dropbtn:hover, .dropbtn:focus {
     background-color: #d11313;
-  }
+  } */
   
+  .date_container
+  {
+    text-align: center;
+    margin-top: 3vw;
+  }
+
   .dropdown {
     position: relative;
     display: inline-block;
@@ -148,8 +145,8 @@ input[type="radio"]:checked {
 .night
 {
     background-color: white;
-    width: 53vw;
-    height: 18vw;
+    width: 50vw;
+    /* height: 18vw; */
     border-radius: 2vw;
     margin-left: auto;
     margin-right: auto;

@@ -1,7 +1,7 @@
 var express = require('express');
 const app = express();
 var request = require('request')
-var i = 1500;
+var i = 1550;
 var url;
 
 app.use(express.static("./src")); 
@@ -73,15 +73,15 @@ app.post('/payment', (req, res)=>{
     if(slot[i][0] != 9)
     {
       if (slot[i][2] == 1) {
-        total = total + 80;
+        total = total + 60;
       }
 
       else if (slot[i][2] == 2) {
-        total = total + 150;
+        total = total + 120;
       }
 
       else if (slot[i][2] == 3) {
-        total = total + 200;
+        total = total + 180;
       }
       
       else if (slot[i][2] == 4) {
@@ -92,15 +92,15 @@ app.post('/payment', (req, res)=>{
     else
     {
       if (slot[i][2] == 1) {
-        total = total + 160;
+        total = total + 120;
       }
 
       else if (slot[i][2] == 2) {
-        total = total + 300;
+        total = total + 240;
       }
 
       else if (slot[i][2] == 3) {
-        total = total + 400;
+        total = total + 360;
       }
       
       else if (slot[i][2] == 4) {
