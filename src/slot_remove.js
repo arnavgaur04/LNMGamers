@@ -17,7 +17,18 @@ const db = getFirestore(firebaseApp);
 
 for (let index = 0; index < 10; index++) {
     if (localStorage.getItem("Slot_number" + index) != null) {
-        arr.push(localStorage.getItem("Slot_number" + index));
+        if (index == 8) {
+            arr.push(localStorage.getItem("Slot_number" + index));
+            arr.push("9 1");
+            break;
+        }
+
+        else if(index == 9)
+        {
+            arr.push(localStorage.getItem("Slot_number" + index));
+            arr.push("8 1");
+            break;
+        }
     }
 }
 
