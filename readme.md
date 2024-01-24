@@ -49,9 +49,9 @@ This Node.js application, backed by Firebase, allows users to book slots for the
 
 # Login Page
 
-![App Screenshot](https://github.com/arnavgaur04/LNMgamers/images/login-page.png)
+![App Screenshot](https://github.com/arnavgaur04/LNMgamers/blob/main/images/login-page.png)
 
 # Node Slot Booking Application with Firebase
 
-![App Screenshot](https://github.com/arnavgaur04/LNMgamers/images/home-page.png)
+![App Screenshot](https://github.com/arnavgaur04/LNMgamers/blob/main/images/home-page.png)
 
