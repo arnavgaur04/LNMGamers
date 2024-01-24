@@ -33,8 +33,6 @@ This Node.js application, backed by Firebase, allows users to book slots for the
     ```bash
     npm install
 
-
-
 ### Start the application:
 
 1. **Start the server:**
