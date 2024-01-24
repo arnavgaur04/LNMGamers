@@ -37,9 +37,14 @@ This Node.js application, backed by Firebase, allows users to book slots for the
 
 ### Start the application:
 
+1. **Start the server:**
     ```bash
     node back.js
 
-Open your web browser and navigate to http://localhost to access the application.
-View available slots, choose a date and time, and reserve your slot.
+2. Open your web browser and navigate to http://localhost to access the application.
+
+3. View available slots, choose a date and time, and reserve your slot.
+
+### Reference Images:
+
 
