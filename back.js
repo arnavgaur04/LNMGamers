@@ -44,7 +44,6 @@ app.get('/success', (req, res)=>{
       console.log(out.data.status);
       res.render(out.data.status);
     }
-
     else
     {
       console.log("not found");
