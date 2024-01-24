@@ -35,7 +35,7 @@ This Node.js application, backed by Firebase, allows users to book slots for the
 
 ### Start the application:
 
-1. **Start the server:**
+1. Start the server:
     ```bash
     node back.js
 
