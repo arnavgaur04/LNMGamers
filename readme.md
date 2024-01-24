@@ -21,12 +21,12 @@ This Node.js application, backed by Firebase, allows users to book slots for the
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/node-slot-booking.git
+   git clone https://github.com/arnavgaur04/LNMgamers.git
 
 2. **Navigate to directory:**
 
     ```bash
-    cd node-slot-booking
+    cd LNMgamers
 
 3. **Install dependencies:**
 
