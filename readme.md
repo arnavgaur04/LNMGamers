@@ -43,13 +43,13 @@ This Node.js application, backed by Firebase, allows users to book slots for the
 
 3. View available slots, choose a date and time, and reserve your slot.
 
-### Reference Images:
+## Reference Images:
 
-# Login Page
+### Login Page
 
 ![App Screenshot](https://github.com/arnavgaur04/LNMgamers/blob/main/images/login-page.png)
 
-# Node Slot Booking Application with Firebase
+### Node Slot Booking Application with Firebase
 
 ![App Screenshot](https://github.com/arnavgaur04/LNMgamers/blob/main/images/home-page.png)
 
